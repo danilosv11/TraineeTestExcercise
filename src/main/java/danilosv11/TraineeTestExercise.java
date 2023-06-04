@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TraineeTestExercise {
-    private static final String FILE_PATH = "D:/airports.csv";
+    private static final String FILE_PATH = "/airports.csv";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
