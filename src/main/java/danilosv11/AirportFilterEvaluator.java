@@ -7,10 +7,11 @@ public class AirportFilterEvaluator implements FilterEvaluator{
     public boolean assessFilter(String[] data, String filter) {
         return Arrays.stream(filter.split("&"))
                 .allMatch(condition -> Arrays.stream(condition.split("\\|\\|"))
-                        .anyMatch(splitCondition -> AirportFilterEvaluator.assessCondition(data, splitCondition.trim())));
+                        .anyMatch(splitCondition -> assessCondition(data, splitCondition.trim())));
     }
 
-    public static boolean assessCondition(String[] data, String condition) {
+    @Override
+    public boolean assessCondition(String[] data, String condition) {
         String[] parts = condition.split("[<>=]");
         int column = Integer.parseInt(parts[0].substring(parts[0].indexOf('[') + 1, parts[0].indexOf(']'))) - 1;
         String operator = condition.replaceAll("[^<>=]", "");
